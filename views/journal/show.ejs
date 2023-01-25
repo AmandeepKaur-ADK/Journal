@@ -14,8 +14,10 @@
         <%= journal.createdAt.toLocaleDateString() %>
     </div>
     <a href="/journal" class="btn btn-secondary">All Journals</a>
-    <a href="/journal/edit/<%= journal.id%>" class="btn btn-info">Edit</a>
-    
+    <a href="/journal/edit/<%= journal.id %>" class="btn btn-info">Edit</a>
+    <div>
+        <%= journal.content %> 
+    </div>
     <div>
         <%- journal.santizedHTML %>
     </div>

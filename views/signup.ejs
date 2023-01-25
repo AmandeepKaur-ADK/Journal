@@ -84,15 +84,15 @@
     <!-- Custom styles for this template -->
     <link href="css/signup.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center" style="background: url(/Images/signupbg.jpg); background-repeat: no-repeat; background-size: cover;">
     
 <main class="form-signin w-100 m-auto">
-  <form action="/signup" method="POST">
+  <form action="/signup" method="POST" >
     <div>
       <img class="mb-4" src="/Images/logo3.jpg" alt="" width="72" height="57">
       <h1 class="h3 mb-3 fw-normal" style="color: white; font-weight: 600; font-size: 30px;">Please sign in</h1>
-      <div style="margin: 0px;" >
-        <div class="form-floating">
+      <div style="margin: 5px; background-color: white; padding: 5px; border-radius: 6px;" >
+        <div class="form-floating" >
           <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Name">
           <label for="floatingInput"></label>
         </div>
@@ -110,8 +110,8 @@
         </div>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-      <div style="border: 2px groove rgba(103, 100, 100, 0.888) ; padding-top: 10px; padding-left: 10px; padding-right: 10px; border-radius: 10px; margin: 10px; font-size: 15px;">
-        <p style="color: white;"> Already have a account! <a href="/login">Login</a></p>
+      <div style="border: 2px groove rgba(103, 100, 100, 0.888) ; padding-top: 10px; padding-left: 10px; padding-right: 10px; border-radius: 10px; margin: 10px; font-size: 15px; background-color: white;">
+        <p style="color: brown;"> Already have a account! <a href="/login">Login</a></p>
       </div >
     </div>
     

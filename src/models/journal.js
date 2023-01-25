@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const marked = require('marked');
+const {marked} = require('marked');
 const slugify = require('slugify');
+const createDomPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+const dompurify = createDomPurify(new JSDOM().window);
 const JournalSchema = new mongoose.Schema({
     title:{
         type: String,
@@ -37,8 +40,7 @@ JournalSchema.pre('validate', function(next){
 
     if(this.markdown){
         this.sanitizedHTML = dompurify.sanitize(marked(this.markdown))
-    }
-    next();
+    } 
+    next()
 })
-const Journal = mongoose.model("Journal", JournalSchema);
-module.exports = Journal;
+module.exports = mongoose.model("Journal", JournalSchema);
