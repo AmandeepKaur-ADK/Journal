@@ -1,9 +1,11 @@
 const express = require('express');
 const Journal = require('../models/journal');
 const { route } = require('./home');
+const checkAuthenticated = require('./login')
+require('./login')
 const router = express.Router();
 
-router.get("/journal", async (req, res)=>{
+router.get("/journal", checkAuthenticated ,async (req, res)=>{
   const journal = await Journal.find().sort({createdAt: 'descending'})
   res.render("journal/index", {journal: journal});
 })

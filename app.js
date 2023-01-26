@@ -5,6 +5,11 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 3000;
+const bcrypt = require('bcrypt')
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+ const initializePassport = require('./src/routes/passport-config');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
