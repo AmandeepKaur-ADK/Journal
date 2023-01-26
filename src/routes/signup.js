@@ -1,30 +1,42 @@
 const express = require('express');
-const User = require('../models/users');
+const mongoose = require('mongoose');
+const User = require('../models/user');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+
 router.get('/signup',(req, res)=>{
     res.render("signup");
   })
 router.post('/signup', async(req,res) =>{
     try {
-      const password = req.body.password;
-      const confirmpassword = req.body.confirmpassword;
-      if(password === confirmpassword){
-        const user = new User({
-          uname: req.body.name,
-          email: req.body.email,
-          password: req.body.password
-        })
-        console.log(unmae+email+password);
-       const signed =  await user.save();
-       res.status(200).send(signed);
-      }
-      else{
-        res.send("Password not matching")
-      }
+      let hashedPassword = await bcrypt.hash(req.body.password, 10);
+      let user = new User({
+        id: Date.now().toString(),
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword
+      })
+      // if(User.find.exists({name : req.body.name} || {email: req.body.email})){
+      //   console.log('User Exists');
+      // }
+      // else{
+        if(req.body.password === req.body.confirmpassword){
+          user =  await user.save();
+          res.status(200).redirect('/login');;
+          console.log(user);
+        }
+        else{
+          res.send('Password not match!');
+        }
+      // }
+       
+      
     }
     catch(err){
-      res.status(400).send(err);
+      res.status(400).redirect('/signup');
+      console.log(err);
     }
+   
   })
 
 module.exports = router;

@@ -23,9 +23,9 @@ app.use(journalRouter);
 
 //database
 require('./src/db/conn');
-const User = require('./src/models/users');
-const Journal = require('./src/models/journal');
-const { json } = require('express');
+// const User = require('./src/models/users');
+// const Journal = require('./src/models/journal');
+// const { json } = require('express');
 const { log } = require('console');
 
 //paths

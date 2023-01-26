@@ -24,23 +24,7 @@ router.get('/journal/:slug', async (req, res)=>{
   res.render('journal/show', {journal: journal});
 })
 
-  // router.post('/journal', async (req, res, next)=>{    
-  //   let journal = new Journal({
-  //     title:  req.body.title,
-  //     content:  req.body.content,
-  //     markdown: req.body.markdown
-  //   })
-  //   try{
-
-  //     article = await journal.save();
-  //     res.redirect(`/journal/${journal.slug}`);
-  //   }catch(err){
-  //     console.log(err);
-  //     res.render('journal/new', {journal: journal});
-  //   }
-  // })
-   
-  // has error not showing error or going to /journal/journal.slug
+ 
 
   router.post('/journal', async (req, res, next)=>{    
     req.journal = new Journal()
@@ -68,7 +52,6 @@ router.get('/journal/:slug', async (req, res)=>{
       }
     }
   }
-  // put has error not showing after saving edditted file
   router.delete('/journal/:id', async (req, res)=>{
     await Journal.findByIdAndDelete(req.params.id);
     res.redirect('/journal');
@@ -77,6 +60,24 @@ router.get('/journal/:slug', async (req, res)=>{
 module.exports = router;
 
 
+
+
+ // router.post('/journal', async (req, res, next)=>{    
+  //   let journal = new Journal({
+  //     title:  req.body.title,
+  //     content:  req.body.content,
+  //     markdown: req.body.markdown
+  //   })
+  //   try{
+
+  //     article = await journal.save();
+  //     res.redirect(`/journal/${journal.slug}`);
+  //   }catch(err){
+  //     console.log(err);
+  //     res.render('journal/new', {journal: journal});
+  //   }
+  // })
+   
 
 
   // router.put('/journal/:id', async(req, res)=>{
@@ -88,7 +89,7 @@ module.exports = router;
   //   journal.markdown = req.body.markdown
   //   console.log(req.body.title);
   //   try{
-  //     article = await journal.save();
+  //     journal = await journal.save();
   //     console.log(`${journal.slug}`);
   //     res.redirect(`/journal/${journal.slug}`);
   //   }catch(err){
